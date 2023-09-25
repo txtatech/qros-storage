@@ -1,7 +1,7 @@
 # qros-storage
 This is a convergent repository for various qr code data storage projects with the goal of creating a single qr code storage solution.
 
-The following will gzip, base64 encode, split into chunks, write all to the 'chinks.json' file, create qr codes and a qr code video file for the 'Virtual_Forest_Epoch_Rising.txt' file.
+The following will gzip, base64 encode, split into chunks, write all data to the 'chunks.json' file, create qr codes and a qr code video file for the 'Virtual_Forest_Epoch_Rising.txt' file.
 
 python3 qros-builder-full
 
