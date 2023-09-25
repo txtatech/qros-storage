@@ -1,20 +1,19 @@
 # qros-storage
 This is a convergent repository for various qr code data storage projects with the goal of creating a single qr code storage solution.
 
-The following will gzip, base64 encode, split into chunks, write all data to the 'chunks.json' file, create qr codes and a qr code video file for the 'Virtual_Forest_Epoch_Rising.txt' file.
+# The following will gzip, base64 encode, split into chunks, write all data to the 'chunks.json' file, create qr codes and a qr code video file for the 'Virtual_Forest_Epoch_Rising.txt' file.
 
-~
 python3 qros-builder-full
 
-The following will read the .png qr codes and create ASCII art qr codes:
+# The following will read the .png qr codes and create ASCII art qr codes:
 
 bash qr-png-ascii-convert.sh
 
-The final bash script will concatenate the individual ASCII art qr codes into a single text file and add the required padding:
+# The final bash script will concatenate the individual ASCII art qr codes into a single text file and add the required padding:
 
 bash ablob-padding.sh
 
-# Related Projects:
+## Related Projects:
 
 # qros-builder-webby 
 
