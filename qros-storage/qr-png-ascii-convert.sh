@@ -10,7 +10,7 @@ counter=0
 mkdir -p converted1
 
 # Read all PNG files in the "crawl" folder
-for file in crawl/*.png; do
+for file in qrs/*.png; do
   # Check if the file is a PNG image
   if ! file "$file" | grep -q "PNG image data"; then
     continue
@@ -54,4 +54,4 @@ for file in crawl/*.png; do
   fi
 done
 
-echo "QR code ASCII art generated to outputs/converted1 for all PNG files in the outputs/crawl folder."
+echo "QR code ASCII art generated to outputs/converted1 for all PNG files in the qrs folder."
