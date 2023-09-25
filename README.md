@@ -17,6 +17,16 @@ The final bash script will concatenate the individual ASCII art qr codes into a 
 
 bash ablob-padding.sh
 
+## qros-storage Goals:
+
+Read any file format. So far .img, .txt and .iso have been tested but I have also tested coverting .zip files to .img files with the 'dd' command before running the encoding process on the file. This technique may work but adds an extra layer to encode and decode.
+
+Use the output 'chunks.json' as the primary storage text blob that gets posted to a blockchain. Ideally, if constrained by the block's storage capacity the JSON would be segmented into multiple complete JSON files that each fill an entire block. This would make the chunk and block size be close to the same in character count. Doing so would make each chunk (data-on-block) segment be able to be decoded 'in full' from a single block.
+
+Find a way to compress either the 'blob.txt' (the concatenated ASCII art qr codes) or create a mapping schema (perhaps with djinn-dna and simpy-basher) that can reduce the character count of the file. 
+
+The alternative to the above is to create a custom mapping schema that reads the ASCII qr codes and maps where each '#' is in each line. Then be able to recreate the ASCII qr codes from that map thus avoiding storing large amounts of textual data as ASCII art qr codes.
+
 # Related Projects:
 
 # qros-builder-webby 
