@@ -27,6 +27,11 @@ Find a way to compress either the 'blob.txt' (the concatenated ASCII art qr code
 
 The alternative to the above is to create a custom mapping schema that reads the ASCII qr codes and maps where each '#' is in each line. Then be able to recreate the ASCII qr codes from that map thus avoiding storing large amounts of textual data as ASCII art qr codes.
 
+Note: The djinn-dna and simpy-basher projects are sub-projects of the virtual-forest repository.
+All of the testing files for those sub-projects are located here:
+
+https://github.com/txtatech/virtual-forest/tree/main/virtual-forest/game_instance_sandbox/djinn-dna
+
 # Related Projects:
 
 # qros-builder-webby 
