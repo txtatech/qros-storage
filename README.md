@@ -81,3 +81,14 @@ A fractal encoding framework written in Python that generates fractal images bas
 https://github.com/txtatech/fractal-encoder
 
 A fractal encoding framework for fractal encoding text, lattice structuring, ASCII art qr code generation, 3D QR code and fractal grid generation plus mappings for programmable terrain.
+
+# virtual-forest/game_instance_sandbox/djinn-dna 
+
+'djinn-dna' Note: This is a sub-project of the virtual-forest project.
+
+https://github.com/txtatech/virtual-forest/tree/main/virtual-forest/game_instance_sandbox/djinn-dna
+
+The latest test version of the sim.py entry point and the DNA encoding framework source files are in 'game_instance_sandbox/djinn-dna':
+
+
+Djinn-DNA Note: The README-DNA.txt explains the steps involved.
