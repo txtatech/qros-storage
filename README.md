@@ -86,7 +86,7 @@ A fractal encoding framework for fractal encoding text, lattice structuring, ASC
 
 This is a sub-project of the [virtual-forest](https://github.com/txtatech/virtual-forest) project.
 
-The the DNA encoding framework source files are in 'game_instance_sandbox/djinn-dna':
+The DNA encoding framework source files are in 'game_instance_sandbox/djinn-dna':
 
 https://github.com/txtatech/virtual-forest/tree/main/virtual-forest/game_instance_sandbox/djinn-dna
 
