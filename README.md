@@ -1,6 +1,10 @@
 # qros-storage
 This is a convergent repository for various qr code data storage projects with the goal of creating a single qr code (and text-based) storage solution.
 
+# Look in the testing folder for the latest testing version:
+
+https://github.com/txtatech/qros-storage/tree/main/qros-storage/testing
+
 # The following Python script will do the following to the data of the specified file:
 
 gzip the data, 
