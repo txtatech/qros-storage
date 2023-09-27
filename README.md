@@ -11,7 +11,7 @@ split the data into chunks,
 
 write all data to the 'chunks.json' file,
 
-create .png qr codes of the data chinks,
+create .png qr codes of the data chunks,
 
 create a qr code video file of the data,
 
