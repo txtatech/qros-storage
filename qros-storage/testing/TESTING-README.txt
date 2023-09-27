@@ -3,7 +3,7 @@ The 'step1-djinnfluxer2a.py' script will read the 'Virtual_Forest_Epoch_Rising.t
 python3 step1-djinnfluxer2a.py
 
 The 'step2-qros-builder-full.py' script will read the encoded_dna.json file and gzip, base64 encode, split into chunks and write to the chunks.json file.
-The script also produces .png qr codes of the data and produce a qr code video file.
+The script also produces .png qr codes of the data and produces a qr code video file.
 
 python3 step2-qros-builder-full.py
 
