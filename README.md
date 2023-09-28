@@ -5,6 +5,10 @@ This is a convergent repository for various qr code data storage projects with t
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/testing
 
+# Read the TESTING-README for full instructions:
+
+https://github.com/txtatech/qros-storage/blob/main/qros-storage/testing/TESTING-README.txt
+
 # The following Python script will do the following to the data of the specified file:
 
 gzip the data, 
