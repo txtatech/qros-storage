@@ -17,7 +17,7 @@ Usage:
 
 python3 2qros-storage-js.py
 
-The '3qros-storage-py.py' script will read the 'hive-tx.min.js' file and encode it with the djinn-dna encoding method and produce a file named:
+The '3qros-storage-py.py' script will read the '4qros-storage-builder.py' file and encode it with the djinn-dna encoding method and produce a file named:
 
 encoded_dna_py.json
 
