@@ -37,7 +37,47 @@ The final bash script will concatenate the individual ASCII art qr codes into a 
 
 bash ablob-padding.sh
 
-## qros-storage Goals:
+# qros-storage Latest Goals:
+
+Step 1: Create 'first strand' as 'data' entry in JSON DNA.
+
+Read a data file.
+
+Read input data file and create mappings for words that occur more than four times.
+
+Initiate djinn-dna encoder and encode the data file contents.
+
+Write the DNA encoded data to a 'first strand' within a JSON file.
+
+Write the generated mappings and their key pairs to a 'first strand' metadata within a JSON file.
+
+
+Step 2: Create 'second strand' as 'javascript' entry in JSON DNA.
+
+Read a javascript file.
+
+Read input of a javascript file and create mappings for words that occur more than four times.
+
+Initiate djinn-dna encoder and encode the javascript file's contents.
+
+Write the DNA encoded data to a 'second strand' within a JSON file.
+
+Write the generated mappings and their key pairs to the 'second strand' metadata within a JSON file.
+
+
+Step 3: Create 'third strand' as 'python' entry in JSON DNA.
+
+Read a python file.
+
+Read input of a python file and create mappings for words that occur more than four times.
+
+Initiate djinn-dna encoder and encode the python file's contents.
+
+Write the DNA encoded data to a 'third strand' within a JSON file.
+
+Write the generated mappings and their key pairs to the 'third strand' metadata within a JSON file.
+
+## qros-storage initial Goals:
 
 Read any file format. So far .img, .txt and .iso have been tested but I have also tested coverting .zip files to .img files with the 'dd' command before running the encoding process on the file. This technique may work but adds an extra layer to encode and decode.
 
