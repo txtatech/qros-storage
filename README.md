@@ -80,6 +80,12 @@ Write the DNA encoded data to a 'third strand' within a JSON file.
 
 Write the generated mappings and their key pairs to the 'third strand' metadata within a JSON file.
 
+
+# Step 4:
+
+Create license(s) metadata entry for each strand in the JSON file.
+
+
 ## qros-storage initial Goals:
 
 Read any file format. So far .img, .txt and .iso have been tested but I have also tested coverting .zip files to .img files with the 'dd' command before running the encoding process on the file. This technique may work but adds an extra layer to encode and decode.
