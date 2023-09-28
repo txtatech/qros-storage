@@ -1,6 +1,8 @@
 Steps:
 
-The '1qros-storage-data.py' script will read the 'Virtual_Forest_Epoch_Rising.txt' file and encode it with the djinn-dna encoding method and produce a file named: encoded_dna_data.json
+The '1qros-storage-data.py' script will read the 'Virtual_Forest_Epoch_Rising.txt' file and encode it with the djinn-dna encoding method and produce a file named:
+
+encoded_dna_data.json
 
 Usage:
 
