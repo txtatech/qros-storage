@@ -39,7 +39,8 @@ bash ablob-padding.sh
 
 # qros-storage Latest Goals:
 
-Step 1: Create 'first strand' as 'data' entry in JSON DNA.
+
+# Step 1: Create 'first strand' as 'data' entry in JSON DNA.
 
 Read a data file.
 
@@ -52,7 +53,8 @@ Write the DNA encoded data to a 'first strand' within a JSON file.
 Write the generated mappings and their key pairs to a 'first strand' metadata within a JSON file.
 
 
-Step 2: Create 'second strand' as 'javascript' entry in JSON DNA.
+
+# Step 2: Create 'second strand' as 'javascript' entry in JSON DNA.
 
 Read a javascript file.
 
@@ -65,7 +67,8 @@ Write the DNA encoded data to a 'second strand' within a JSON file.
 Write the generated mappings and their key pairs to the 'second strand' metadata within a JSON file.
 
 
-Step 3: Create 'third strand' as 'python' entry in JSON DNA.
+
+# Step 3: Create 'third strand' as 'python' entry in JSON DNA.
 
 Read a python file.
 
