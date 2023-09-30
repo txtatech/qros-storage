@@ -1,7 +1,7 @@
 # qros-storage
 This is a convergent repository for various qr code data storage projects with the goal of creating a single qr code (and text-based) storage solution.
 
-## Use the following for the latest stable famework:
+## Use the following for the latest stable version:
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna
 
