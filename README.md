@@ -31,56 +31,56 @@ python3 qros-dna-decoder.py
             "Chromosomes": {
                 "Genes": {
                     "Nucleotide Sequences": {
-                        "code": "The `qros-_ATGG-encoder.py` _C _G _T _Z<--...This is dna encoded from a text file that creates the mappings."
+                        "code": "The `qros-_CTZA-encoder.py` _C _G _T<--...This is 'dna' encoded from a text file that creates the mappings."
                     }
                 }
             }
         },
         "introns": {
-            "mappings": "{'the': '_T', 'qrosdnaencoderpy': '_A',<--...This is where the mappings are stored."
+            "mappings": "{'the': '_T', 'qrosdnaencoderpy': '_A',,<--...This is where the mappings are stored."
         },
         "exons": {
-            "code": "/*! For license information please<--...This is the un-encoded (as is) conent of the 'web.js' javascript file.",
+            "code": "var req_data = null;\nvar refreshTimeout = 0;<--...This is the un-encoded (as is) content of the 'web.js' javascript file.",
             "metadata": {
                 "metadata": {
                     "version": "1.0",
                     "author": "AI",
                     "description": "DNA strand with metadata and versioning",
-                    "timestamp": "2023-09-30T14:35:37.461583"
+                    "timestamp": "2023-09-30T15:49:26.463244"
                 }
             }
         },
         "files": {
-            "code": "{\"chunks\": [\"H4sIABNqGGUC_4S4<--...This is the gziped, base64 encoded and chunked data of the 'qros-dna.zip' file...written in a JSON file as chunks.",
+            "code": "{\"chunks\": [\"H4sIAMF7GGUC_32a<--...This is the gziped, base64 encoded and chunked data of the 'qros-dna.zip' file...written in a JSON file as chunks.",
             "metadata": {
                 "metadata": {
                     "version": "1.0",
                     "author": "AI",
                     "description": "DNA strand with metadata and versioning",
-                    "timestamp": "2023-09-30T14:35:37.461583"
+                    "timestamp": "2023-09-30T15:49:26.463244"
                 }
             }
         }
     },
     "initial_strand": {
-        "code": "# Begin _TAC _TTG\n\n_AAZ _AGTZ\n_AAZ<--...This is a 'dna encoded' python script that encodes this JSON",
+        "code": "# Begin _TAC _TTG\n\n_AAZ _ACT\n_AAZ<--...This is a 'dna encoder' python script that encodes this JSON",
         "metadata": {
             "metadata": {
                 "version": "1.0",
                 "author": "AI",
                 "description": "DNA strand with metadata and versioning",
-                "timestamp": "2023-09-30T14:35:37.461583"
+                "timestamp": "2023-09-30T15:49:26.463244"
             }
         }
     },
     "second_strand": {
-        "code": "# Begin _CCGT _CT reconstruction _AGC<--...This is a 'dna encoded' python script that decodes this JSON",
+        "code": "# Begin _TTCC _CT _CGZT _GAC _ACAA<--...This is a 'dna decoder' python script that decodes this JSON",
         "metadata": {
             "metadata": {
                 "version": "1.0",
                 "author": "AI",
                 "description": "DNA strand with metadata and versioning",
-                "timestamp": "2023-09-30T14:35:37.461583"
+                "timestamp": "2023-09-30T15:49:26.463244"
             }
         }
     }
