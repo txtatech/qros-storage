@@ -1,6 +1,34 @@
 # qros-storage
 This is a convergent repository for various qr code data storage projects with the goal of creating a single qr code (and text-based) storage solution.
 
+## Use the following for the latest stable famework:
+
+https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna
+
+## NOTE ON QROS-DNA:
+
+Generates DNA-like code representations for characters and character combinations ranging from one to four characters long. These generated mappings are used to encode text data.
+
+It reads text data from an input file, applies consistent mappings using the generated DNA-like code, and outputs the mapped data to an output file. This process effectively encodes the text using the DNA-like code representations.
+
+The main script also handles metadata for the encoded data, including versioning and author information.
+
+Usage:
+
+Step 1:
+
+python3 qros-dna-encoder.py
+
+Step 2:
+
+python3 qros-dna-decoder.py
+
+Step 3:
+
+python3 qros-dna-decoder2.py
+
+## Note for QROS-DNA
+
 # Look in the testing folder for the latest testing version:
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/testing
