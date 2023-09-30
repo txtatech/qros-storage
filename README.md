@@ -128,7 +128,7 @@ This structure allows the JSON file to act as a multi-layered container that hol
 2. **Data Compression**: Chunked and base64 encoded ZIP data.
 3. **Data Integrity**: Through metadata for versioning and timestamping.
 4. **Multi-language Support**: Holds Python and JavaScript code.
-5. 
+ 
 ## End Note For QROS-DNA
 
 # Look in the testing folder for the latest older testing versions:
