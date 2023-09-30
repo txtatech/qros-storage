@@ -86,7 +86,49 @@ python3 qros-dna-decoder.py
     }
 }
 ~~~
+The example JSON file, `encoded_dna_data-EXAMPLE.json`, has a complex nested structure. Below is a breakdown of its structure and what each part does:
 
+### Root Level:
+
+1. **dna_structure**: Encapsulates the core data structure meant to mimic a DNA structure.
+    - **Genomes**: A further categorization within `dna_structure`.
+        - **Chromosomes**: Another level of categorization.
+            - **Genes**: The lowest level of this hierarchy.
+                - **Nucleotide Sequences**: Contains the encoded code, which is a representation of another file's content in an encoded form.
+                
+2. **introns**: Stores the mappings used for encoding and decoding the code present in `dna_structure` and other strands. The mappings are stored as a string representation of a Python dictionary.
+
+3. **exons**: Contains un-encoded JavaScript code (from the file `web.js`) and associated metadata.
+    - **code**: The raw JavaScript code.
+    - **metadata**: Additional information about this strand like version, author, description, and timestamp.
+
+4. **files**: Contains compressed, base64 encoded, and chunked data (presumably from a ZIP file). It's also accompanied by metadata.
+    - **code**: The compressed and encoded data.
+    - **metadata**: Similar to the metadata in `exons`.
+
+5. **initial_strand**: Stores encoded Python code and metadata for a Python script that presumably encodes this JSON structure.
+    - **code**: The encoded Python code.
+    - **metadata**: Metadata similar to that in `exons`.
+
+6. **second_strand**: Similar to `initial_strand`, but this appears to be a Python script for decoding the JSON structure.
+    - **code**: The encoded Python code for decoding.
+    - **metadata**: Additional metadata similar to other strands.
+
+### Summary of Content Types:
+
+- **Encoded Python Code**: Found in `initial_strand` and `second_strand`.
+- **Mappings for Encoding/Decoding**: Found in `introns`.
+- **Encoded Text**: Found in `dna_structure`.
+- **Raw JavaScript Code**: Found in `exons`.
+- **Compressed and Encoded Data**: Found in `files`.
+
+This structure allows the JSON file to act as a multi-layered container that holds various types of information, each with its own purpose and encoding logic. It can be used for:
+
+1. **Data Obfuscation**: Encoded Python code and text.
+2. **Data Compression**: Chunked and base64 encoded ZIP data.
+3. **Data Integrity**: Through metadata for versioning and timestamping.
+4. **Multi-language Support**: Holds Python and JavaScript code.
+5. 
 ## End Note For QROS-DNA
 
 # Look in the testing folder for the latest older testing versions:
