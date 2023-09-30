@@ -23,13 +23,9 @@ Step 2:
 
 python3 qros-dna-decoder.py
 
-Step 3:
-
-python3 qros-dna-decoder2.py
-
 ## End Note For QROS-DNA
 
-# Look in the testing folder for the latest testing version:
+# Look in the testing folder for the latest older testing versions:
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/testing
 
