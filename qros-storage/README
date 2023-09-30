@@ -1,9 +1,41 @@
 # qros-storage
 This is a convergent repository for various qr code data storage projects with the goal of creating a single qr code (and text-based) storage solution.
 
+## Use the following for the latest stable famework:
+
+https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna
+
+## NOTE ON QROS-DNA:
+
+Generates DNA-like code representations for characters and character combinations ranging from one to four characters long. These generated mappings are used to encode text data.
+
+It reads text data from an input file, applies consistent mappings using the generated DNA-like code, and outputs the mapped data to an output file. This process effectively encodes the text using the DNA-like code representations.
+
+The main script also handles metadata for the encoded data, including versioning and author information.
+
+Usage:
+
+Step 1:
+
+python3 qros-dna-encoder.py
+
+Step 2:
+
+python3 qros-dna-decoder.py
+
+Step 3:
+
+python3 qros-dna-decoder2.py
+
+## End Note For QROS-DNA
+
 # Look in the testing folder for the latest testing version:
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/testing
+
+# Read the TESTING-README for full instructions:
+
+https://github.com/txtatech/qros-storage/blob/main/qros-storage/testing/TESTING-README.txt
 
 # The following Python script will do the following to the data of the specified file:
 
@@ -37,7 +69,56 @@ The final bash script will concatenate the individual ASCII art qr codes into a 
 
 bash ablob-padding.sh
 
-## qros-storage Goals:
+# qros-storage Latest Goals:
+
+
+# Step 1: Create 'first strand' as 'data' entry in JSON DNA.
+
+Read a data file.
+
+Read input data file and create mappings for words that occur more than four times.
+
+Initiate djinn-dna encoder and encode the data file contents.
+
+Write the DNA encoded data to a 'first strand' within a JSON file.
+
+Write the generated mappings and their key pairs to a 'first strand' metadata within a JSON file.
+
+
+
+# Step 2: Create 'second strand' as 'javascript' entry in JSON DNA.
+
+Read a javascript file.
+
+Read input of a javascript file and create mappings for words that occur more than four times.
+
+Initiate djinn-dna encoder and encode the javascript file's contents.
+
+Write the DNA encoded data to a 'second strand' within a JSON file.
+
+Write the generated mappings and their key pairs to the 'second strand' metadata within a JSON file.
+
+
+
+# Step 3: Create 'third strand' as 'python' entry in JSON DNA.
+
+Read a python file.
+
+Read input of a python file and create mappings for words that occur more than four times.
+
+Initiate djinn-dna encoder and encode the python file's contents.
+
+Write the DNA encoded data to a 'third strand' within a JSON file.
+
+Write the generated mappings and their key pairs to the 'third strand' metadata within a JSON file.
+
+
+# Step 4:
+
+Create license(s) metadata entry for each strand in the JSON file.
+
+
+## qros-storage initial Goals:
 
 Read any file format. So far .img, .txt and .iso have been tested but I have also tested coverting .zip files to .img files with the 'dd' command before running the encoding process on the file. This technique may work but adds an extra layer to encode and decode.
 
