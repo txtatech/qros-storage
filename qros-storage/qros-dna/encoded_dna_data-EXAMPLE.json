@@ -36,7 +36,7 @@
         }
     },
     "initial_strand": {
-        "code": "# Begin _TAC _TTG\n\n_AAZ _ACT\n_AAZ<--...This is a 'dna encoded' python script that encodes this JSON",
+        "code": "# Begin _TAC _TTG\n\n_AAZ _ACT\n_AAZ<--...This is a 'dna encoder' python script that encodes this JSON",
         "metadata": {
             "metadata": {
                 "version": "1.0",
