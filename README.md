@@ -27,7 +27,7 @@ Step 3:
 
 python3 qros-dna-decoder2.py
 
-## Note for QROS-DNA
+## End Note For QROS-DNA
 
 # Look in the testing folder for the latest testing version:
 
