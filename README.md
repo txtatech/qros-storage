@@ -62,7 +62,7 @@ It reads text data from an input file, applies consistent mappings using the gen
 
 The main script also handles metadata for the encoded data, including versioning and author information.
 
-Usage:
+## Usage:
 
 Step 1:
 
