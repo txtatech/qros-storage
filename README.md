@@ -23,6 +23,69 @@ Step 2:
 
 python3 qros-dna-decoder.py
 
+# Example of 'DNA Encoded' JSON:
+<
+{
+    "dna_structure": {
+        "Genomes": {
+            "Chromosomes": {
+                "Genes": {
+                    "Nucleotide Sequences": {
+                        "code": "The `qros-_ATGG-encoder.py` _C _G _T _Z<--...This is dna encoded from a text file that creates the mappings."
+                    }
+                }
+            }
+        },
+        "introns": {
+            "mappings": "{'the': '_T', 'qrosdnaencoderpy': '_A',<--...This is where the mappings are stored."
+        },
+        "exons": {
+            "code": "/*! For license information please see hive-tx.min.js<--...This is the un-encoded (as is) conent of the 'hive-tx.min.js' javascript file.",
+            "metadata": {
+                "metadata": {
+                    "version": "1.0",
+                    "author": "AI",
+                    "description": "DNA strand with metadata and versioning",
+                    "timestamp": "2023-09-30T14:35:37.461583"
+                }
+            }
+        },
+        "files": {
+            "code": "{\"chunks\": [\"H4sIABNqGGUC_4S4<--...This is the gziped, base64 encoded and chunked data of the 'hivesigner.js-master.zip' file...written in a JSON file as chunks.",
+            "metadata": {
+                "metadata": {
+                    "version": "1.0",
+                    "author": "AI",
+                    "description": "DNA strand with metadata and versioning",
+                    "timestamp": "2023-09-30T14:35:37.461583"
+                }
+            }
+        }
+    },
+    "initial_strand": {
+        "code": "# Begin _TAC _TTG\n\n_AAZ _AGTZ\n_AAZ<--...This is a 'dna encoded' python script that encodes this JSON",
+        "metadata": {
+            "metadata": {
+                "version": "1.0",
+                "author": "AI",
+                "description": "DNA strand with metadata and versioning",
+                "timestamp": "2023-09-30T14:35:37.461583"
+            }
+        }
+    },
+    "second_strand": {
+        "code": "# Begin _CCGT _CT reconstruction _AGC<--...This is a 'dna encoded' python script that decodes this JSON",
+        "metadata": {
+            "metadata": {
+                "version": "1.0",
+                "author": "AI",
+                "description": "DNA strand with metadata and versioning",
+                "timestamp": "2023-09-30T14:35:37.461583"
+            }
+        }
+    }
+}
+>
 ## End Note For QROS-DNA
 
 # Look in the testing folder for the latest older testing versions:
