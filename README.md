@@ -23,7 +23,7 @@ Step 2:
 
 python3 qros-dna-decoder.py
 
-# Example of 'DNA Encoded' JSON:
+# Example of 'QROS-DNA Encoded' JSON:
 ~~~
 {
     "dna_structure": {
