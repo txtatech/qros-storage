@@ -24,7 +24,7 @@ Step 2:
 python3 qros-dna-decoder.py
 
 # Example of 'DNA Encoded' JSON:
-<
+~~~
 {
     "dna_structure": {
         "Genomes": {
@@ -85,7 +85,8 @@ python3 qros-dna-decoder.py
         }
     }
 }
->
+~~~
+
 ## End Note For QROS-DNA
 
 # Look in the testing folder for the latest older testing versions:
