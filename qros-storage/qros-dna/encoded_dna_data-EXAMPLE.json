@@ -13,7 +13,7 @@
             "mappings": "{'the': '_T', 'qrosdnaencoderpy': '_A',,<--...This is where the mappings are stored."
         },
         "exons": {
-            "code": "var req_data = null;\nvar refreshTimeout = 0;<--...This is the un-encoded (as is) conent of the 'web.js' javascript file.",
+            "code": "var req_data = null;\nvar refreshTimeout = 0;<--...This is the un-encoded (as is) content of the 'web.js' javascript file.",
             "metadata": {
                 "metadata": {
                     "version": "1.0",
