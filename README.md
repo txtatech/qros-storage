@@ -40,7 +40,7 @@ python3 qros-dna-decoder.py
             "mappings": "{'the': '_T', 'qrosdnaencoderpy': '_A',<--...This is where the mappings are stored."
         },
         "exons": {
-            "code": "/*! For license information please see hive-tx.min.js<--...This is the un-encoded (as is) conent of the 'hive-tx.min.js' javascript file.",
+            "code": "/*! For license information please<--...This is the un-encoded (as is) conent of the 'web.js' javascript file.",
             "metadata": {
                 "metadata": {
                     "version": "1.0",
@@ -51,7 +51,7 @@ python3 qros-dna-decoder.py
             }
         },
         "files": {
-            "code": "{\"chunks\": [\"H4sIABNqGGUC_4S4<--...This is the gziped, base64 encoded and chunked data of the 'hivesigner.js-master.zip' file...written in a JSON file as chunks.",
+            "code": "{\"chunks\": [\"H4sIABNqGGUC_4S4<--...This is the gziped, base64 encoded and chunked data of the 'qros-dna.zip' file...written in a JSON file as chunks.",
             "metadata": {
                 "metadata": {
                     "version": "1.0",
