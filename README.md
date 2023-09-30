@@ -7,6 +7,55 @@ https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna
 
 ## NOTE ON QROS-DNA:
 
+# QROS-DNA Project
+
+## What It Does
+
+- Encodes and decodes text like DNA.
+- Keeps track of version info and other metadata.
+- Cleans and parses code files.
+- Stores everything in a JSON file.
+- Generates QR codes from encoded data.
+- Creates videos from QR codes.
+
+## Features
+
+### Encoding and Decoding
+
+- Maps common words to shorter versions.
+- Can reverse the mapping to get original text back.
+
+### Metadata
+
+- Adds version, author, and timestamps to data.
+
+### Code Parsing
+
+- Removes comments from code.
+- Stores cleaned code in a JSON file.
+
+### JSON Structure
+
+- Organized like DNA (Genomes > Chromosomes > Genes).
+- Saves mappings in 'introns'.
+- Can save other data in 'exons'.
+
+### QR Code Generation
+
+- Transforms encoded data into QR codes.
+- Allows multiple QR codes for large data.
+
+### Video Creation
+
+- Combines QR codes into a video sequence.
+- Can set video duration and transition effects.
+
+### Reversibility
+
+- Can decode data back to its original form.
+
+## Brief description:
+
 Generates DNA-like code representations for characters and character combinations ranging from one to four characters long. These generated mappings are used to encode text data.
 
 It reads text data from an input file, applies consistent mappings using the generated DNA-like code, and outputs the mapped data to an output file. This process effectively encodes the text using the DNA-like code representations.
