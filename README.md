@@ -66,11 +66,15 @@ Usage:
 
 Step 1:
 
+~~~
 python3 qros-dna-encoder.py
+~~~
 
 Step 2:
 
+~~~
 python3 qros-dna-decoder.py
+~~~
 
 # Example of 'QROS-DNA Encoded' JSON:
 ~~~
