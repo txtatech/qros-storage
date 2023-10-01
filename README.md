@@ -1,5 +1,7 @@
 # qros-storage
-This is a convergent repository for various qr code data storage projects with the goal of creating a single qr code (and text-based) storage solution.
+This is a convergent repository for various qr code data storage projects with the goal of creating a single qr code (and text-based) storage solution. 
+
+# The current version encapsulates python scripts, a text file, bash scripts, a javascript file and a zip file... all within a single JSON file. 
 
 ## Use the following for the latest stable version:
 
