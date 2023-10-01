@@ -56,7 +56,7 @@ https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna
 
 ## Brief description:
 
-Generates DNA-like code representations for characters and character combinations ranging from one to four characters long. These generated mappings are used to encode text data.
+Generates DNA-like code representations for characters and character combinations ranging from one to five characters long. These generated mappings are used to encode text data.
 
 It reads text data from an input file, applies consistent mappings using the generated DNA-like code, and outputs the mapped data to an output file. This process effectively encodes the text using the DNA-like code representations.
 
