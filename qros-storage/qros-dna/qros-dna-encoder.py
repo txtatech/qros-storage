@@ -161,6 +161,9 @@ generated_mappings.extend([f"{char1}{char2}{char3}" for char1 in combinations fo
 # Generate mappings for combinations of four characters
 generated_mappings.extend([f"{char1}{char2}{char3}{char4}" for char1 in combinations for char2 in combinations for char3 in combinations for char4 in combinations])
 
+# Generate mappings for combinations of five characters
+generated_mappings.extend([f"{char1}{char2}{char3}{char4}{char5}" for char1 in combinations for char2 in combinations for char3 in combinations for char4 in combinations for char5 in combinations])
+
 # Initialize a dictionary to store word counts
 word_frequency_filtered = {}
 
@@ -174,7 +177,7 @@ with open('qros-dna-readme.txt', 'r') as file:
                 word_frequency_filtered[word] = word_frequency_filtered.get(word, 0) + 1
 
 # Filtering words that occur three or more times. The word frequency count can be set to any number
-words_four_or_more_times_filtered = {word: count for word, count in word_frequency_filtered.items() if count >= 3}
+words_four_or_more_times_filtered = {word: count for word, count in word_frequency_filtered.items() if count >= 2}
 
 # Writing the generated key-value pairs to the mappings.txt file
 with open('outputs/dna-mappings.txt', 'w') as file:

@@ -29,6 +29,9 @@ import os
 import json
 import time  # For adding delay
 
+os.makedirs('outputs', exist_ok=True)  # Create the directory if it doesn't exist
+os.makedirs('outputs/decoded', exist_ok=True)  # Create the directory if it doesn't exist
+
 def generate_qr_code(data):
     qr = qrcode.QRCode(
         error_correction=qrcode.constants.ERROR_CORRECT_M,
@@ -59,23 +62,23 @@ def compress_and_generate_base64_qr_images(file_path, chunk_size=1500):
     chunks = [encoded_data_base64[i:i+chunk_size] for i in range(0, len(encoded_data_base64), chunk_size)]
 
     # Write chunks to a JSON file
-    with open('file-chunks.json', 'w') as json_file:
+    with open('outputs/file-chunks.json', 'w') as json_file:
         json.dump({"chunks": chunks}, json_file)  # Save the chunks as an array within a JSON object
 
-    os.makedirs('file-qrs', exist_ok=True)  # Create the directory if it doesn't exist
+    os.makedirs('outputs/file-qrs', exist_ok=True)  # Create the directory if it doesn't exist
 
     for i, chunk in enumerate(chunks):
         print(f"Size of chunk {i}: {len(chunk)}")
 
         qr_img = generate_qr_code(chunk)
 
-        cv2.imwrite(f'file-qrs/qr_{i:09d}.png', qr_img)  # Save each QR code as a PNG file
+        cv2.imwrite(f'outputs/file-qrs/qr_{i:09d}.png', qr_img)  # Save each QR code as a PNG file
 
 img_file_path = 'qros-dna.zip'
 compress_and_generate_base64_qr_images(img_file_path)
 
 # Add ffmpeg command to generate the video
-os.system('ffmpeg -framerate 30 -i file-qrs/qr_%09d.png -vf "scale=730:730,setsar=1" -an -c:v libx264 -pix_fmt yuv420p qros-dna-zip-file.mp4')
+os.system('ffmpeg -framerate 30 -i outputs/file-qrs/qr_%09d.png -vf "scale=730:730,setsar=1" -an -c:v libx264 -pix_fmt yuv420p outputs/qros-dna-zip-file.mp4')
 
 # Begin decoding video file and generating 'decoded_qros-dna.zip'
 
@@ -85,7 +88,7 @@ import base64
 import gzip
 
 # Open the video capture
-video_capture = cv2.VideoCapture('qros-dna-zip-file.mp4')
+video_capture = cv2.VideoCapture('outputs/qros-dna-zip-file.mp4')
 
 def safe_base64_decode(data):
     if isinstance(data, str):
@@ -144,9 +147,9 @@ data = b''.join(data_chunks)
 try:
     # Decompress the full data
     decompressed_data = gzip.decompress(data)
-    with open("decoded_qros-dna.zip", "wb") as out_file:
+    with open("outputs/decoded/decoded_qros-dna.zip", "wb") as out_file:
         out_file.write(decompressed_data)
-    print("Data decompressed and written to 'decoded_qros-dna.zip'.")
+    print("Data decompressed and written to 'outputs/decoded/decoded_qros-dna.zip'.")
 except Exception as e:
     print(f"Exception occurred during decompression: {e}")
 
@@ -178,6 +181,9 @@ generated_mappings.extend([f"{char1}{char2}{char3}" for char1 in combinations fo
 # Generate mappings for combinations of four characters
 generated_mappings.extend([f"{char1}{char2}{char3}{char4}" for char1 in combinations for char2 in combinations for char3 in combinations for char4 in combinations])
 
+# Generate mappings for combinations of five characters
+generated_mappings.extend([f"{char1}{char2}{char3}{char4}{char5}" for char1 in combinations for char2 in combinations for char3 in combinations for char4 in combinations for char5 in combinations])
+
 # Initialize a dictionary to store word counts
 word_frequency_filtered = {}
 
@@ -190,25 +196,25 @@ with open('qros-dna-readme.txt', 'r') as file:
             if word.strip():  # Excluding empty strings or whitespace
                 word_frequency_filtered[word] = word_frequency_filtered.get(word, 0) + 1
 
-# Filtering words that occur 2 or more times. Setting this to four works well
+# Filtering words that occur three or more times. The word frequency count can be set to any number
 words_four_or_more_times_filtered = {word: count for word, count in word_frequency_filtered.items() if count >= 2}
 
 # Writing the generated key-value pairs to the mappings.txt file
-with open('mappings.txt', 'w') as file:
+with open('outputs/dna-mappings.txt', 'w') as file:
     file.write("{\n")
     for word, code in zip(words_four_or_more_times_filtered, generated_mappings):
         file.write(f"  '{word}':'_{code}',\n")
     file.write("}\n")
 
 # Read the original mapping from 'mappings.txt' and reverse it
-with open('mappings.txt', 'r') as file:
+with open('outputs/dna-mappings.txt', 'r') as file:
     mapping = eval(file.read())
 
 # Create the reverse mapping
 reverse_mapping = {v.strip("'_"): k for k, v in mapping.items()}
 
 # Write the reversed mapping to 'reverse-mappings.txt'
-with open('reverse-mappings.txt', 'w') as file:
+with open('outputs/dna-reverse-mappings.txt', 'w') as file:
     file.write("{\n")
     for code, word in reverse_mapping.items():
         file.write(f"  '_{code}':'{word}',\n")
@@ -282,7 +288,7 @@ class CodeParser:
 
 # Initialize CodeParser
 file_path = 'qros-dna-readme.txt'
-output_path = 'encoded_dna_data.json'
+output_path = 'outputs/encoded_dna_data.json'
 parser = CodeParser(file_path, output_path, rna_dna_mapper)
 
 # Process initial_strand
@@ -377,20 +383,37 @@ dna_structure['exons'] = {
 
 # Begin file addition
 
-# Handle fourth_file_path
-fifth_file_path = 'file-chunks.json'  # Replace with the actual path to your fourth file
+# Handle fifth_file_path
+fifth_file_path = 'outputs/file-chunks.json'  # Replace with the actual path to your fifth file
 
 def read_fifth_file(file_path):
     with open(file_path, 'r') as file:
         code_string = file.read()
     return code_string
 
-# Read the content of the fourth file
+# Read the content of the fifth file
 plain_fifth_file = read_fifth_file(fifth_file_path)
 
-# Add the content of the fifth file to the 'exons' entry in 'dna_structure'
+# Add the content of the fifth file to the 'files' entry in 'dna_structure'
 dna_structure['files'] = {
     'code': plain_fifth_file,
+    'metadata': initial_strand_metadata  # Reusing initial_strand_metadata for example
+}
+
+# Handle sixth_file_path
+sixth_file_path = 'index.html'  # Replace with the actual path to your sixth file
+
+def read_sixth_file(file_path):
+    with open(file_path, 'r') as file:
+        code_string = file.read()
+    return code_string
+
+# Read the content of the sixth file
+plain_sixth_file = read_sixth_file(sixth_file_path)
+
+# Add the content of the sixth file to the 'exons' entry in 'dna_structure'
+dna_structure['html'] = {
+    'code': plain_sixth_file,
     'metadata': initial_strand_metadata  # Reusing initial_strand_metadata for example
 }
 
@@ -439,23 +462,23 @@ def compress_and_generate_base64_qr_images(file_path, chunk_size=1500):
     chunks = [encoded_data_base64[i:i+chunk_size] for i in range(0, len(encoded_data_base64), chunk_size)]
 
     # Write chunks to a JSON file
-    with open('chunks.json', 'w') as json_file:
+    with open('outputs/chunks.json', 'w') as json_file:
         json.dump({"chunks": chunks}, json_file)  # Save the chunks as an array within a JSON object
 
-    os.makedirs('qrs', exist_ok=True)  # Create the directory if it doesn't exist
+    os.makedirs('outputs/qrs', exist_ok=True)  # Create the directory if it doesn't exist
 
     for i, chunk in enumerate(chunks):
         print(f"Size of chunk {i}: {len(chunk)}")
 
         qr_img = generate_qr_code(chunk)
 
-        cv2.imwrite(f'qrs/qr_{i:09d}.png', qr_img)  # Save each QR code as a PNG file
+        cv2.imwrite(f'outputs/qrs/qr_{i:09d}.png', qr_img)  # Save each QR code as a PNG file
 
-img_file_path = 'encoded_dna_data.json'
+img_file_path = 'outputs/encoded_dna_data.json'
 compress_and_generate_base64_qr_images(img_file_path)
 
 # Add ffmpeg command to generate the video
-os.system('ffmpeg -framerate 30 -i qrs/qr_%09d.png -vf "scale=730:730,setsar=1" -an -c:v libx264 -pix_fmt yuv420p encoded_dna_data.mp4')
+os.system('ffmpeg -framerate 30 -i outputs/qrs/qr_%09d.png -vf "scale=730:730,setsar=1" -an -c:v libx264 -pix_fmt yuv420p outputs/encoded_dna_data.mp4')
 
 # Begin decoding video file and generating 'decoded_encoded_dna_integrity.json'
 
@@ -465,7 +488,7 @@ import base64
 import gzip
 
 # Open the video capture
-video_capture = cv2.VideoCapture('encoded_dna_data.mp4')
+video_capture = cv2.VideoCapture('outputs/encoded_dna_data.mp4')
 
 def safe_base64_decode(data):
     if isinstance(data, str):
@@ -524,20 +547,23 @@ data = b''.join(data_chunks)
 try:
     # Decompress the full data
     decompressed_data = gzip.decompress(data)
-    with open("decoded_encoded_dna_integrity.json", "wb") as out_file:
+    with open("outputs/decoded/decoded_encoded_dna_integrity.json", "wb") as out_file:
         out_file.write(decompressed_data)
-    print("Data decompressed and written to 'decoded_encoded_dna_integrity.json'.")
+    print("Data decompressed and written to 'outputs/decoded/decoded_encoded_dna_integrity.json'.")
 except Exception as e:
     print(f"Exception occurred during decompression: {e}")
 
 print("Finished.")
 
-qros-dna-decoder:
+qrps-dna-decoder:
 
 # Begin decoding and reconstruction of original files from encoded_dna_data.json
 
+import os
 import json
 import ast  # For parsing string representation of a dictionary
+
+os.makedirs('outputs/decoded', exist_ok=True)  # Create the directory if it doesn't exist
 
 def reverse_mappings(mappings):
     return {value[1:]: key for key, value in mappings.items()}  # Remove the '_' prefix while reversing
@@ -551,7 +577,7 @@ def decode_body(body, reversed_mappings):
     return body
 
 # Step 1: Read the encoded_dna_data.json file
-with open('encoded_dna_data.json', 'r') as json_file:
+with open('outputs/encoded_dna_data.json', 'r') as json_file:
     encoded_dna_data = json.load(json_file)
 
 # Extract encoded data and mappings
@@ -560,7 +586,8 @@ encoded_initial_strand = encoded_dna_data['initial_strand']['code']
 encoded_second_strand = encoded_dna_data['second_strand']['code']
 mappings_str = encoded_dna_data['dna_structure']['introns']['mappings']
 non_encoded_fourth_file = encoded_dna_data['dna_structure']['exons']['code']  # New line for fourth file
-non_encoded_fifth_file = encoded_dna_data['dna_structure']['files']['code']  # New line for fourth file
+non_encoded_fifth_file = encoded_dna_data['dna_structure']['files']['code']  # New line for fifth file
+non_encoded_sixth_file = encoded_dna_data['dna_structure']['html']['code']  # New line for sixth file
 
 # Parse the string representation of mappings into a Python dictionary
 mappings = ast.literal_eval(mappings_str)
@@ -574,20 +601,23 @@ decoded_initial_strand = decode_body(encoded_initial_strand, reversed_mappings)
 decoded_second_strand = decode_body(encoded_second_strand, reversed_mappings)
 
 # Step 4: Write the decoded content to new files
-with open('decoded_qros-dna-readme.txt', 'w') as file:
+with open('outputs/decoded/decoded_qros-dna-readme.txt', 'w') as file:
     file.write(decoded_dna_structure)
 
-with open('decoded_qros-dna-encoder.py', 'w') as file:
+with open('outputs/decoded/decoded_qros-dna-encoder.py', 'w') as file:
     file.write(decoded_initial_strand)
 
-with open('decoded_qros-dna-decoder.py', 'w') as file:
+with open('outputs/decoded/decoded_qros-dna-decoder.py', 'w') as file:
     file.write(decoded_second_strand)
 
-with open('decoded_web.js', 'w') as file:
+with open('outputs/decoded/decoded_web.js', 'w') as file:
     file.write(non_encoded_fourth_file)
 
-with open('decoded_file-chunks.json', 'w') as file:
+with open('outputs/decoded/decoded_file-chunks.json', 'w') as file:
     file.write(non_encoded_fifth_file)
+
+with open('outputs/decoded/decoded_html-index.html', 'w') as file:
+    file.write(non_encoded_sixth_file)
 
 # Begin chunks.json decoder
  
@@ -596,7 +626,7 @@ import base64
 import gzip
 
 # Define the path to the 'chunks.json' file
-chunks_json_path = 'chunks.json'
+chunks_json_path = 'outputs/chunks.json'
 
 # Read the 'chunks.json' file to retrieve encoded data chunks
 with open(chunks_json_path, 'r') as json_file:
@@ -625,7 +655,7 @@ except Exception as e:
 
 if decompressed_data is not None:
     # Define the path to the output file (the original file)
-    output_file_path = 'decoded_chunks_file.json'
+    output_file_path = 'outputs/decoded/decoded_chunks_file.json'
 
     # Write the decompressed data to the output file
     with open(output_file_path, 'wb') as output_file:
@@ -652,7 +682,7 @@ def decode_body(body, reversed_mappings):
     return body
 
 # Step 1: Read the encoded_dna_data.json file
-with open('decoded_chunks_file.json', 'r') as json_file:
+with open('outputs/decoded/decoded_chunks_file.json', 'r') as json_file:
     encoded_dna_data = json.load(json_file)
 
 # Extract encoded data and mappings
@@ -661,7 +691,8 @@ encoded_initial_strand = encoded_dna_data['initial_strand']['code']
 encoded_second_strand = encoded_dna_data['second_strand']['code']
 non_encoded_fourth_file = encoded_dna_data['dna_structure']['exons']['code']  # New line for fourth file
 mappings_str = encoded_dna_data['dna_structure']['introns']['mappings']
-non_encoded_fifth_file = encoded_dna_data['dna_structure']['files']['code']  # New line for fourth file
+non_encoded_fifth_file = encoded_dna_data['dna_structure']['files']['code']  # New line for fifth file
+non_encoded_sixth_file = encoded_dna_data['dna_structure']['html']['code']  # New line for sixth file
 
 # Parse the string representation of mappings into a Python dictionary
 mappings = ast.literal_eval(mappings_str)
@@ -675,20 +706,23 @@ decoded_initial_strand = decode_body(encoded_initial_strand, reversed_mappings)
 decoded_second_strand = decode_body(encoded_second_strand, reversed_mappings)
 
 # Step 4: Write the decoded content to new files
-with open('decoded_qros-dna-chunks-readme.txt', 'w') as file:
+with open('outputs/decoded/decoded_qros-dna-chunks-readme.txt', 'w') as file:
     file.write(decoded_dna_structure)
 
-with open('decoded_qros-dna-chunks-encoder.py', 'w') as file:
+with open('outputs/decoded/decoded_qros-dna-chunks-encoder.py', 'w') as file:
     file.write(decoded_initial_strand)
 
-with open('decoded_qros-dna-chunks-decoder.py', 'w') as file:
+with open('outputs/decoded/decoded_qros-dna-chunks-decoder.py', 'w') as file:
     file.write(decoded_second_strand)
 
-with open('decoded_chunks-web.js', 'w') as file:
+with open('outputs/decoded/decoded_chunks-web.js', 'w') as file:
     file.write(non_encoded_fourth_file)
 
-with open('decoded_chunks-file-chunks.json', 'w') as file:
+with open('outputs/decoded/decoded_chunks-file-chunks.json', 'w') as file:
     file.write(non_encoded_fifth_file)
+
+with open('outputs/decoded/decoded_chunks-index.html', 'w') as file:
+    file.write(non_encoded_sixth_file)
 
 # Begin final file extraction
 
@@ -697,7 +731,7 @@ import base64
 import gzip
 
 # Define the path to the 'chunks.json' file
-chunks_json_path = 'decoded_chunks-file-chunks.json'
+chunks_json_path = 'outputs/decoded/decoded_chunks-file-chunks.json'
 
 # Read the 'chunks.json' file to retrieve encoded data chunks
 with open(chunks_json_path, 'r') as json_file:
@@ -726,7 +760,7 @@ except Exception as e:
 
 if decompressed_data is not None:
     # Define the path to the output file (the original file)
-    output_file_path = 'decoded_chunks_qros-dna.zip'
+    output_file_path = 'outputs/decoded/decoded_chunks_qros-dna.zip'
 
     # Write the decompressed data to the output file
     with open(output_file_path, 'wb') as output_file:
