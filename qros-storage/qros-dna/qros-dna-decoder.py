@@ -29,6 +29,9 @@ mappings_str = encoded_dna_data['dna_structure']['introns']['mappings']
 non_encoded_fourth_file = encoded_dna_data['dna_structure']['exons']['code']  # New line for fourth file
 non_encoded_fifth_file = encoded_dna_data['dna_structure']['files']['code']  # New line for fifth file
 non_encoded_sixth_file = encoded_dna_data['dna_structure']['html']['code']  # New line for sixth file
+encoded_third_strand = encoded_dna_data['third_strand']['encoded-encoder']
+encoded_third_strand = encoded_dna_data['third_strand']['encoded-decoder']
+non_encoded_ninth_file = encoded_dna_data['third_strand']['js-shell']
 
 # Parse the string representation of mappings into a Python dictionary
 mappings = ast.literal_eval(mappings_str)
@@ -40,15 +43,16 @@ reversed_mappings = reverse_mappings(mappings)
 decoded_dna_structure = decode_body(encoded_dna_structure, reversed_mappings)
 decoded_initial_strand = decode_body(encoded_initial_strand, reversed_mappings)
 decoded_second_strand = decode_body(encoded_second_strand, reversed_mappings)
+decoded_third_strand = decode_body(encoded_second_strand, reversed_mappings)
 
 # Step 4: Write the decoded content to new files
 with open('outputs/decoded/decoded_qros-dna-readme.txt', 'w') as file:
     file.write(decoded_dna_structure)
 
-with open('outputs/decoded/decoded_qros-dna-encoder.py', 'w') as file:
+with open('outputs/decoded/decoded_qros-dna-combos.sh', 'w') as file:
     file.write(decoded_initial_strand)
 
-with open('outputs/decoded/decoded_qros-dna-decoder.py', 'w') as file:
+with open('outputs/decoded/decoded_qros-dna-txt-split.sh', 'w') as file:
     file.write(decoded_second_strand)
 
 with open('outputs/decoded/decoded_web.js', 'w') as file:
@@ -59,6 +63,15 @@ with open('outputs/decoded/decoded_file-chunks.json', 'w') as file:
 
 with open('outputs/decoded/decoded_html-index.html', 'w') as file:
     file.write(non_encoded_sixth_file)
+
+with open('outputs/decoded/decoded_qros-dna-encoder.py', 'w') as file:
+    file.write(decoded_third_strand)
+
+with open('outputs/decoded/decoded_qros-dna-decoder.py', 'w') as file:
+    file.write(decoded_third_strand)
+
+with open('outputs/decoded/decoded_js-shell.html', 'w') as file:
+    file.write(non_encoded_ninth_file)
 
 # Begin chunks.json decoder
  
@@ -134,6 +147,9 @@ non_encoded_fourth_file = encoded_dna_data['dna_structure']['exons']['code']  # 
 mappings_str = encoded_dna_data['dna_structure']['introns']['mappings']
 non_encoded_fifth_file = encoded_dna_data['dna_structure']['files']['code']  # New line for fifth file
 non_encoded_sixth_file = encoded_dna_data['dna_structure']['html']['code']  # New line for sixth file
+encoded_third_strand = encoded_dna_data['third_strand']['encoded-encoder']
+encoded_third_strand = encoded_dna_data['third_strand']['encoded-decoder']
+non_encoded_ninth_file = encoded_dna_data['third_strand']['js-shell']
 
 # Parse the string representation of mappings into a Python dictionary
 mappings = ast.literal_eval(mappings_str)
@@ -145,15 +161,16 @@ reversed_mappings = reverse_mappings(mappings)
 decoded_dna_structure = decode_body(encoded_dna_structure, reversed_mappings)
 decoded_initial_strand = decode_body(encoded_initial_strand, reversed_mappings)
 decoded_second_strand = decode_body(encoded_second_strand, reversed_mappings)
+decoded_third_strand = decode_body(encoded_third_strand, reversed_mappings)
 
 # Step 4: Write the decoded content to new files
 with open('outputs/decoded/decoded_qros-dna-chunks-readme.txt', 'w') as file:
     file.write(decoded_dna_structure)
 
-with open('outputs/decoded/decoded_qros-dna-chunks-encoder.py', 'w') as file:
+with open('outputs/decoded/decoded_qros-dna-chunks-combos.sh', 'w') as file:
     file.write(decoded_initial_strand)
 
-with open('outputs/decoded/decoded_qros-dna-chunks-decoder.py', 'w') as file:
+with open('outputs/decoded/decoded_qros-dna-chunks-txt-split.sh', 'w') as file:
     file.write(decoded_second_strand)
 
 with open('outputs/decoded/decoded_chunks-web.js', 'w') as file:
@@ -164,6 +181,15 @@ with open('outputs/decoded/decoded_chunks-file-chunks.json', 'w') as file:
 
 with open('outputs/decoded/decoded_chunks-index.html', 'w') as file:
     file.write(non_encoded_sixth_file)
+
+with open('outputs/decoded/decoded_chunks-qros-dna-encoder.py', 'w') as file:
+    file.write(decoded_third_strand)
+
+with open('outputs/decoded/decoded_chunks-qros-dna-decoder.py', 'w') as file:
+    file.write(decoded_third_strand)
+
+with open('outputs/decoded/decoded_chunks-js-shell.html', 'w') as file:
+    file.write(non_encoded_ninth_file)
 
 # Begin final file extraction
 
