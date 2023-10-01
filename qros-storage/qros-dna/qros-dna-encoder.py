@@ -10,6 +10,7 @@ import json
 import time  # For adding delay
 
 os.makedirs('outputs', exist_ok=True)  # Create the directory if it doesn't exist
+os.makedirs('outputs/decoded', exist_ok=True)  # Create the directory if it doesn't exist
 
 def generate_qr_code(data):
     qr = qrcode.QRCode(
@@ -126,9 +127,9 @@ data = b''.join(data_chunks)
 try:
     # Decompress the full data
     decompressed_data = gzip.decompress(data)
-    with open("outputs/decoded_qros-dna.zip", "wb") as out_file:
+    with open("outputs/decoded/decoded_qros-dna.zip", "wb") as out_file:
         out_file.write(decompressed_data)
-    print("Data decompressed and written to 'decoded_qros-dna.zip'.")
+    print("Data decompressed and written to 'outputs/decoded/decoded_qros-dna.zip'.")
 except Exception as e:
     print(f"Exception occurred during decompression: {e}")
 
@@ -172,25 +173,25 @@ with open('qros-dna-readme.txt', 'r') as file:
             if word.strip():  # Excluding empty strings or whitespace
                 word_frequency_filtered[word] = word_frequency_filtered.get(word, 0) + 1
 
-# Filtering words that occur two or more times. Setting this to four works well
-words_four_or_more_times_filtered = {word: count for word, count in word_frequency_filtered.items() if count >= 2}
+# Filtering words that occur three or more times. The word frequency count can be set to any number
+words_four_or_more_times_filtered = {word: count for word, count in word_frequency_filtered.items() if count >= 3}
 
 # Writing the generated key-value pairs to the mappings.txt file
-with open('outputs/mappings.txt', 'w') as file:
+with open('outputs/dna-mappings.txt', 'w') as file:
     file.write("{\n")
     for word, code in zip(words_four_or_more_times_filtered, generated_mappings):
         file.write(f"  '{word}':'_{code}',\n")
     file.write("}\n")
 
 # Read the original mapping from 'mappings.txt' and reverse it
-with open('outputs/mappings.txt', 'r') as file:
+with open('outputs/dna-mappings.txt', 'r') as file:
     mapping = eval(file.read())
 
 # Create the reverse mapping
 reverse_mapping = {v.strip("'_"): k for k, v in mapping.items()}
 
 # Write the reversed mapping to 'reverse-mappings.txt'
-with open('outputs/reverse-mappings.txt', 'w') as file:
+with open('outputs/dna-reverse-mappings.txt', 'w') as file:
     file.write("{\n")
     for code, word in reverse_mapping.items():
         file.write(f"  '_{code}':'{word}',\n")
@@ -523,9 +524,9 @@ data = b''.join(data_chunks)
 try:
     # Decompress the full data
     decompressed_data = gzip.decompress(data)
-    with open("outputs/decoded_encoded_dna_integrity.json", "wb") as out_file:
+    with open("outputs/decoded/decoded_encoded_dna_integrity.json", "wb") as out_file:
         out_file.write(decompressed_data)
-    print("Data decompressed and written to 'outputs/decoded_encoded_dna_integrity.json'.")
+    print("Data decompressed and written to 'outputs/decoded/decoded_encoded_dna_integrity.json'.")
 except Exception as e:
     print(f"Exception occurred during decompression: {e}")
 
