@@ -1,7 +1,7 @@
 # qros-storage
 This is a convergent repository for various qr code data storage projects with the goal of creating a single data storage solution that encapsulates all the data (and any code) inside a single JSON  file and single qr code video.
 
-The current version encapsulates the following file types within a single JSON file: python scripts, an html file, a text file, bash scripts, a javascript file and a zip file.
+The current version encapsulates the following file types within a single 'qr code video' and JSON file: python scripts, an html file, a text file, bash scripts, a javascript file and a zip file.
 
 ## Use the following for the latest stable version:
 
