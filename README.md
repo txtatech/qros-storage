@@ -9,8 +9,6 @@ https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna
 
 ## NOTE ON QROS-DNA:
 
-# QROS-DNA Project
-
 ## What It Does
 
 - Encodes and decodes text like DNA.
