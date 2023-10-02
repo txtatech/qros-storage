@@ -1,4 +1,5 @@
-# Begin file encoding
+# Begin encoding a file to qr code images and qr code video
+# Tested file types are ZIP IMG ISO TXT but other types may work
 
 import cv2
 import numpy as np
@@ -142,7 +143,7 @@ import ast
 import json
 import datetime
 
-# Generating all possible combinations of 'T', 'A', 'C', 'G' and 'Z' ranging from one to four characters long
+# Generating all possible combinations of 'T', 'A', 'C', 'G' and 'Z' ranging from one to five characters long
 characters = ['T', 'A', 'C', 'G', 'Z']
 combinations = [f"{char}" for char in characters]
 
@@ -167,8 +168,10 @@ generated_mappings.extend([f"{char1}{char2}{char3}{char4}{char5}" for char1 in c
 # Initialize a dictionary to store word counts
 word_frequency_filtered = {}
 
-# Reading the sim.py file and counting occurrences of non-empty words
-with open('qros-dna-readme.txt', 'r') as file:
+# Reading the 'qros-dna-readme.txt' file and counting occurrences of non-empty words
+# A text file containing all the code and text that are to be encoded will boost the number of generated mappings
+# The below can be any file that you want to create mappings from
+with open('qros-dna-readme.txt', 'r') as file: 
     for line in file:
         words = line.split()
         for word in words:
@@ -176,31 +179,32 @@ with open('qros-dna-readme.txt', 'r') as file:
             if word.strip():  # Excluding empty strings or whitespace
                 word_frequency_filtered[word] = word_frequency_filtered.get(word, 0) + 1
 
-# Filtering words that occur three or more times. The word frequency count can be set to any number
+# Filtering words that occur two or more times
+# The word frequency count can be set to any number but the default is four
 words_four_or_more_times_filtered = {word: count for word, count in word_frequency_filtered.items() if count >= 2}
 
-# Writing the generated key-value pairs to the mappings.txt file
+# Writing the generated key-value pairs to 'mappings.txt' for redundancy
 with open('outputs/dna-mappings.txt', 'w') as file:
     file.write("{\n")
     for word, code in zip(words_four_or_more_times_filtered, generated_mappings):
         file.write(f"  '{word}':'_{code}',\n")
     file.write("}\n")
 
-# Read the original mapping from 'mappings.txt' and reverse it
+# Read the original mappings from 'mappings.txt' and reverse it
 with open('outputs/dna-mappings.txt', 'r') as file:
     mapping = eval(file.read())
 
-# Create the reverse mapping
+# Create the reverse mappings
 reverse_mapping = {v.strip("'_"): k for k, v in mapping.items()}
 
-# Write the reversed mapping to 'reverse-mappings.txt'
+# Write the reversed mappings to 'reverse-mappings.txt' for redundancy
 with open('outputs/dna-reverse-mappings.txt', 'w') as file:
     file.write("{\n")
     for code, word in reverse_mapping.items():
         file.write(f"  '_{code}':'{word}',\n")
     file.write("}\n")
 
-# Begin applying mappings and writing files encoded files to JSON
+# Begin applying mappings and writing encoded files to JSON
 
 import re
 import ast
@@ -267,6 +271,8 @@ class CodeParser:
             json.dump(code_entry, json_file, ensure_ascii=False, indent=4)
 
 # Initialize CodeParser
+# Below is the same file that is read to create the mappings
+# The text gets written to JSON at 'Nucleotide Sequences': 'code':
 file_path = 'qros-dna-readme.txt'
 output_path = 'outputs/encoded_dna_data.json'
 parser = CodeParser(file_path, output_path, rna_dna_mapper)
@@ -452,7 +458,11 @@ final_json_data['third_strand'] = third_strand
 with open(output_path, 'w', encoding='utf-8') as json_file:
     json.dump(final_json_data, json_file, ensure_ascii=False, indent=4)
 
+# Once the above is complete everything has been written to 'encoded_dna_data.json'
+
 # Begin generating .png qr codes, 'chunks.json' and creating a qr code .mp4 video from 'encoded_dna_data.json'
+# All files can be reconstructed independently the reconstruction archives are on the following line
+# chunks.json, encoded_dna_data.json, encoded_dna_data.mp4, decoded_encoded_dna_integrity.json and the qr codes in the qrs directory
 
 import cv2
 import numpy as np
