@@ -26,12 +26,17 @@ encoded_dna_structure = encoded_dna_data['dna_structure']['Genomes']['Chromosome
 encoded_initial_strand = encoded_dna_data['initial_strand']['code']
 encoded_second_strand = encoded_dna_data['second_strand']['code']
 mappings_str = encoded_dna_data['dna_structure']['introns']['mappings']
-non_encoded_fourth_file = encoded_dna_data['dna_structure']['exons']['code']  # New line for fourth file
+non_encoded_fourth_file = encoded_dna_data['dna_structure']['exons']['js']  # New line for fourth file
 non_encoded_fifth_file = encoded_dna_data['dna_structure']['files']['code']  # New line for fifth file
-non_encoded_sixth_file = encoded_dna_data['dna_structure']['html']['code']  # New line for sixth file
+non_encoded_sixth_file = encoded_dna_data['dna_structure']['profusion']['code']  # New line for sixth file
 encoded_third_strand = encoded_dna_data['third_strand']['encoded-encoder']
 encoded_third_strand = encoded_dna_data['third_strand']['encoded-decoder']
 non_encoded_ninth_file = encoded_dna_data['third_strand']['js-shell']
+non_encoded_tenth_file = encoded_dna_data['third_strand']['decoder']
+non_encoded_eleventh_file = encoded_dna_data['dna_structure']['emu']['libv86']
+non_encoded_twelfth_file = encoded_dna_data['dna_structure']['emu']['v86wasm']
+non_encoded_thirteenth_file = encoded_dna_data['dna_structure']['exons']['shell']  # New line for fourth file
+non_encoded_fourteenth_file = encoded_dna_data['dna_structure']['exons']['html']  # New line for fourth file
 
 # Parse the string representation of mappings into a Python dictionary
 mappings = ast.literal_eval(mappings_str)
@@ -55,10 +60,10 @@ with open('outputs/decoded/decoded_qros-dna-combos.sh', 'w') as file:
 with open('outputs/decoded/decoded_qros-dna-txt-split.sh', 'w') as file:
     file.write(decoded_second_strand)
 
-with open('outputs/decoded/decoded_web.js', 'w') as file:
+with open('outputs/decoded/decoded_web0.js', 'w') as file:
     file.write(non_encoded_fourth_file)
 
-with open('outputs/decoded/decoded_file-chunks.json', 'w') as file:
+with open('outputs/decoded/decoded_file-qros-dna-zip.json', 'w') as file:
     file.write(non_encoded_fifth_file)
 
 with open('outputs/decoded/decoded_html-index.html', 'w') as file:
@@ -72,6 +77,22 @@ with open('outputs/decoded/decoded_qros-dna-decoder.py', 'w') as file:
 
 with open('outputs/decoded/decoded_js-shell.html', 'w') as file:
     file.write(non_encoded_ninth_file)
+
+with open('outputs/decoded/decoded_qros-dna-decoder1.py', 'w') as file:
+    file.write(non_encoded_tenth_file)
+
+
+with open('outputs/decoded/decoded_libv86.js', 'w') as file:
+    file.write(non_encoded_eleventh_file)
+
+with open('outputs/decoded/decoded_file-v86wasm.json', 'w') as file:
+    file.write(non_encoded_twelfth_file)
+
+with open('outputs/decoded/decoded_shell.html', 'w') as file:
+    file.write(non_encoded_thirteenth_file)
+
+with open('outputs/decoded/decoded_index0.html', 'w') as file:
+    file.write(non_encoded_fourteenth_file)
 
 # Begin chunks.json decoder
  
@@ -143,13 +164,18 @@ with open('outputs/decoded/decoded_chunks_file.json', 'r') as json_file:
 encoded_dna_structure = encoded_dna_data['dna_structure']['Genomes']['Chromosomes']['Genes']['Nucleotide Sequences']['code']
 encoded_initial_strand = encoded_dna_data['initial_strand']['code']
 encoded_second_strand = encoded_dna_data['second_strand']['code']
-non_encoded_fourth_file = encoded_dna_data['dna_structure']['exons']['code']  # New line for fourth file
+non_encoded_fourth_file = encoded_dna_data['dna_structure']['exons']['js']  # New line for fourth file
 mappings_str = encoded_dna_data['dna_structure']['introns']['mappings']
 non_encoded_fifth_file = encoded_dna_data['dna_structure']['files']['code']  # New line for fifth file
-non_encoded_sixth_file = encoded_dna_data['dna_structure']['html']['code']  # New line for sixth file
+non_encoded_sixth_file = encoded_dna_data['dna_structure']['profusion']['code']  # New line for sixth file
 encoded_third_strand = encoded_dna_data['third_strand']['encoded-encoder']
 encoded_third_strand = encoded_dna_data['third_strand']['encoded-decoder']
 non_encoded_ninth_file = encoded_dna_data['third_strand']['js-shell']
+non_encoded_tenth_file = encoded_dna_data['third_strand']['decoder']
+non_encoded_eleventh_file = encoded_dna_data['dna_structure']['emu']['libv86']
+non_encoded_twelfth_file = encoded_dna_data['dna_structure']['emu']['v86wasm']
+non_encoded_thirteenth_file = encoded_dna_data['dna_structure']['exons']['shell']  # New line for fourth file
+non_encoded_fourteenth_file = encoded_dna_data['dna_structure']['exons']['html']  # New line for fourth file
 
 # Parse the string representation of mappings into a Python dictionary
 mappings = ast.literal_eval(mappings_str)
@@ -173,10 +199,10 @@ with open('outputs/decoded/decoded_qros-dna-chunks-combos.sh', 'w') as file:
 with open('outputs/decoded/decoded_qros-dna-chunks-txt-split.sh', 'w') as file:
     file.write(decoded_second_strand)
 
-with open('outputs/decoded/decoded_chunks-web.js', 'w') as file:
+with open('outputs/decoded/decoded_chunks-web0.js', 'w') as file:
     file.write(non_encoded_fourth_file)
 
-with open('outputs/decoded/decoded_chunks-file-chunks.json', 'w') as file:
+with open('outputs/decoded/decoded_chunks-file-qros-dna-zip.json', 'w') as file:
     file.write(non_encoded_fifth_file)
 
 with open('outputs/decoded/decoded_chunks-index.html', 'w') as file:
@@ -191,14 +217,29 @@ with open('outputs/decoded/decoded_chunks-qros-dna-decoder.py', 'w') as file:
 with open('outputs/decoded/decoded_chunks-js-shell.html', 'w') as file:
     file.write(non_encoded_ninth_file)
 
-# Begin final file extraction
+with open('outputs/decoded/decoded_chunks-qros-dna-decoder1.py', 'w') as file:
+    file.write(non_encoded_tenth_file)
+
+with open('outputs/decoded/decoded_chunks-libv86.js', 'w') as file:
+    file.write(non_encoded_eleventh_file)
+
+with open('outputs/decoded/decoded_chunks-file-v86wasm.json', 'w') as file:
+    file.write(non_encoded_twelfth_file)
+
+with open('outputs/decoded/decoded_chunks-shell.html', 'w') as file:
+    file.write(non_encoded_thirteenth_file)
+
+with open('outputs/decoded/decoded_chunks-index0.html', 'w') as file:
+    file.write(non_encoded_fourteenth_file)
+
+# Begin final file extractions
 
 import json
 import base64
 import gzip
 
 # Define the path to the 'chunks.json' file
-chunks_json_path = 'outputs/decoded/decoded_chunks-file-chunks.json'
+chunks_json_path = 'outputs/decoded/decoded_chunks-file-qros-dna-zip.json'
 
 # Read the 'chunks.json' file to retrieve encoded data chunks
 with open(chunks_json_path, 'r') as json_file:
@@ -228,6 +269,52 @@ except Exception as e:
 if decompressed_data is not None:
     # Define the path to the output file (the original file)
     output_file_path = 'outputs/decoded/decoded_chunks_qros-dna.zip'
+
+    # Write the decompressed data to the output file
+    with open(output_file_path, 'wb') as output_file:
+        output_file.write(decompressed_data)
+
+    print(f"Decompressed data written to '{output_file_path}'.")
+else:
+    print("Decompression failed. Check the input data.")
+
+# Begin final second file extractions
+
+import json
+import base64
+import gzip
+
+# Define the path to the 'chunks-v86wasm.json' file
+chunks_json_path = 'outputs/decoded/decoded_chunks-file-v86wasm.json'
+
+# Read the 'chunks.json' file to retrieve encoded data chunks
+with open(chunks_json_path, 'r') as json_file:
+    data = json.load(json_file)
+
+# Extract the chunks from the JSON data
+chunks = data.get('chunks', [])
+
+# Initialize an empty list to hold decoded data chunks
+decoded_chunks = []
+
+# Decode each chunk from base64 and append to the list
+for chunk in chunks:
+    decoded_chunk = base64.urlsafe_b64decode(chunk)
+    decoded_chunks.append(decoded_chunk)
+
+# Concatenate the decoded chunks
+concatenated_data = b''.join(decoded_chunks)
+
+# Decompress the concatenated data using gzip
+try:
+    decompressed_data = gzip.decompress(concatenated_data)
+except Exception as e:
+    print(f"Exception occurred during decompression: {e}")
+    decompressed_data = None
+
+if decompressed_data is not None:
+    # Define the path to the output file (the original file)
+    output_file_path = 'outputs/decoded/decoded_chunks_v86.wasm'
 
     # Write the decompressed data to the output file
     with open(output_file_path, 'wb') as output_file:

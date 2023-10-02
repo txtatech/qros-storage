@@ -1,5 +1,5 @@
-# Begin encoding a file to qr code images and qr code video
-# Tested file types are ZIP IMG ISO TXT but other types may work
+# Begin encoding a WASM file to qr code images and qr code video
+# Tested file types are ZIP IMG ISO TXT WASM JS HTML but other types may work
 
 import cv2
 import numpy as np
@@ -12,6 +12,7 @@ import time  # For adding delay
 
 os.makedirs('outputs', exist_ok=True)  # Create the directory if it doesn't exist
 os.makedirs('outputs/decoded', exist_ok=True)  # Create the directory if it doesn't exist
+os.makedirs('outputs/qrs2', exist_ok=True)  # Create the directory if it doesn't exist
 
 def generate_qr_code(data):
     qr = qrcode.QRCode(
@@ -43,7 +44,138 @@ def compress_and_generate_base64_qr_images(file_path, chunk_size=1500):
     chunks = [encoded_data_base64[i:i+chunk_size] for i in range(0, len(encoded_data_base64), chunk_size)]
 
     # Write chunks to a JSON file
-    with open('outputs/file-chunks.json', 'w') as json_file:
+    with open('outputs/file-v86wasm.json', 'w') as json_file:
+        json.dump({"chunks": chunks}, json_file)  # Save the chunks as an array within a JSON object
+
+    for i, chunk in enumerate(chunks):
+        print(f"Size of chunk {i}: {len(chunk)}")
+
+        qr_img = generate_qr_code(chunk)
+
+        cv2.imwrite(f'outputs/qrs2/qr_{i:09d}.png', qr_img)  # Save each QR code as a PNG file
+
+img_file_path = 'v86.wasm'
+compress_and_generate_base64_qr_images(img_file_path)
+
+# Add ffmpeg command to generate the video
+os.system('ffmpeg -framerate 30 -i outputs/qrs2/qr_%09d.png -vf "scale=730:730,setsar=1" -an -c:v libx264 -pix_fmt yuv420p outputs/file-v86.wasm.mp4')
+
+import cv2
+from pyzbar.pyzbar import decode
+import base64
+import gzip
+
+# Open the video capture
+video_capture = cv2.VideoCapture('outputs/file-v86.wasm.mp4')
+
+def safe_base64_decode(data):
+    if isinstance(data, str):
+        # If data is already a string, it doesn't need to be decoded
+        return data
+    try:
+        data = data.decode("utf-8")  # Decode the bytes to a string
+    except UnicodeDecodeError:
+        # If data is not valid UTF-8, it's probably already decoded
+        return data
+    missing_padding = 4 - len(data) % 4
+    if missing_padding:
+        data += '=' * missing_padding
+    try:
+        return base64.urlsafe_b64decode(data)
+    except Exception as e:
+        print(f"Exception during decoding: {e}")
+        print(f"Data: {data}")
+        return None
+
+# Initialize an empty list to hold the data from each QR code in the video
+data_chunks = []
+prev_chunk = None
+
+while True:
+    # Read a frame from the video
+    ret, frame = video_capture.read()
+
+    # Check if the frame was read successfully
+    if not ret:
+        break
+
+    # Convert the frame to grayscale
+    gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Decode QR codes from the frame
+    decoded_objects = decode(gray_frame)
+
+    # Process the decoded data and append to data_chunks
+    for obj in decoded_objects:
+        decoded_data = safe_base64_decode(obj.data)
+        if decoded_data is not None and decoded_data != prev_chunk:
+            data_chunks.append(decoded_data)
+            prev_chunk = decoded_data
+
+    # Exit the loop if 'q' key is pressed
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+print("Finished processing frames, releasing video capture...")
+video_capture.release()
+
+print("Concatenating and decompressing data...")
+data = b''.join(data_chunks)
+
+try:
+    # Decompress the full data
+    decompressed_data = gzip.decompress(data)
+    with open("outputs/decoded/decoded_file-v86.wasm", "wb") as out_file:
+        out_file.write(decompressed_data)
+    print("Data decompressed and written to 'outputs/decoded/decoded_file-v86.wasm'.")
+except Exception as e:
+    print(f"Exception occurred during decompression: {e}")
+
+print("Finished.")
+
+# Begin encoding a file to qr code images and qr code video
+# Tested file types are ZIP IMG ISO TXT but other types may work
+
+import cv2
+import numpy as np
+import qrcode
+import gzip
+import base64
+import os
+import json
+import time  # For adding delay
+
+def generate_qr_code(data):
+    qr = qrcode.QRCode(
+        error_correction=qrcode.constants.ERROR_CORRECT_M,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(data)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    img_cv = np.array(img.convert('RGB'))
+    img_cv = cv2.cvtColor(img_cv, cv2.COLOR_RGB2BGR)
+
+    # Resize the image to 730x730
+    img_cv = cv2.resize(img_cv, (730, 730))
+
+    return img_cv
+
+def compress_and_generate_base64_qr_images(file_path, chunk_size=1500):
+    with open(file_path, 'rb') as f:
+        data = f.read()
+
+    compressed_data = gzip.compress(data)
+    encoded_data_base64 = base64.urlsafe_b64encode(compressed_data).decode("utf-8")
+
+    print(f"Total size of base64 data before splitting: {len(encoded_data_base64)}")
+
+    chunks = [encoded_data_base64[i:i+chunk_size] for i in range(0, len(encoded_data_base64), chunk_size)]
+
+    # Write chunks to a JSON file
+    with open('outputs/file-qros-dna-zip.json', 'w') as json_file:
         json.dump({"chunks": chunks}, json_file)  # Save the chunks as an array within a JSON object
 
     os.makedirs('outputs/file-qrs', exist_ok=True)  # Create the directory if it doesn't exist
@@ -59,7 +191,7 @@ img_file_path = 'qros-dna.zip'
 compress_and_generate_base64_qr_images(img_file_path)
 
 # Add ffmpeg command to generate the video
-os.system('ffmpeg -framerate 30 -i outputs/file-qrs/qr_%09d.png -vf "scale=730:730,setsar=1" -an -c:v libx264 -pix_fmt yuv420p outputs/qros-dna-zip-file.mp4')
+os.system('ffmpeg -framerate 30 -i outputs/file-qrs/qr_%09d.png -vf "scale=730:730,setsar=1" -an -c:v libx264 -pix_fmt yuv420p outputs/file-qros-dna-zip.mp4')
 
 # Begin decoding video file and generating 'decoded_qros-dna.zip'
 
@@ -69,7 +201,7 @@ import base64
 import gzip
 
 # Open the video capture
-video_capture = cv2.VideoCapture('outputs/qros-dna-zip-file.mp4')
+video_capture = cv2.VideoCapture('outputs/file-qros-dna-zip.mp4')
 
 def safe_base64_decode(data):
     if isinstance(data, str):
@@ -351,7 +483,7 @@ second_strand = {
 final_json_data['second_strand'] = second_strand
 
 # Handle fourth_file_path
-fourth_file_path = 'web.js'  # Replace with the actual path to your fourth file
+fourth_file_path = 'web0.js'  # Replace with the actual path to your fourth file
 
 def read_fourth_file(file_path):
     with open(file_path, 'r') as file:
@@ -361,16 +493,16 @@ def read_fourth_file(file_path):
 # Read the content of the fourth file
 plain_fourth_file = read_fourth_file(fourth_file_path)
 
-# Add the content of the fourth file to the 'exons' entry in 'dna_structure'
+# Add the content of the thirteenth file to the 'exons' entry in 'dna_structure'
 dna_structure['exons'] = {
-    'code': plain_fourth_file,
+    'js': plain_fourth_file,
     'metadata': initial_strand_metadata  # Reusing initial_strand_metadata for example
 }
 
 # Begin file addition
 
 # Handle fifth_file_path
-fifth_file_path = 'outputs/file-chunks.json'  # Replace with the actual path to your fifth file
+fifth_file_path = 'outputs/file-qros-dna-zip.json'  # Replace with the actual path to your fifth file
 
 def read_fifth_file(file_path):
     with open(file_path, 'r') as file:
@@ -398,7 +530,7 @@ def read_sixth_file(file_path):
 plain_sixth_file = read_sixth_file(sixth_file_path)
 
 # Add the content of the sixth file to the 'exons' entry in 'dna_structure'
-dna_structure['html'] = {
+dna_structure['profusion'] = {
     'code': plain_sixth_file,
     'metadata': initial_strand_metadata  # Reusing initial_strand_metadata for example
 }
@@ -453,6 +585,65 @@ third_strand = {
 }
 
 final_json_data['third_strand'] = third_strand
+
+# Handle eleventh_file_path
+eleventh_file_path = 'libv86.js'  # Replace with the actual path to your eleventh file
+
+def read_eleventh_file(file_path):
+    with open(file_path, 'r') as file:
+        code_string = file.read()
+    return code_string
+
+# Read the content of the eleventh file
+plain_eleventh_file = read_eleventh_file(eleventh_file_path)
+
+# Handle twelfth_file_path
+twelfth_file_path = 'outputs/file-v86wasm.json'  # Replace with the actual path to your twelfth file
+
+def read_twelfth_file(file_path):
+    with open(file_path, 'r') as file:
+        code_string = file.read()
+    return code_string
+
+# Read the content of the twelfth file
+plain_twelfth_file = read_twelfth_file(twelfth_file_path)
+
+# Add the content of the twelfth file to the 'emu' entry in 'dna_structure'
+dna_structure['emu'] = {
+    'libv86': plain_eleventh_file,
+    'v86wasm': plain_twelfth_file,
+    'metadata': initial_strand_metadata  # Reusing initial_strand_metadata for example
+}
+
+# Handle thirteenth_file_path
+thirteenth_file_path = 'shell.html'  # Replace with the actual path to your thirteenth file
+
+def read_thirteenth_file(file_path):
+    with open(file_path, 'r') as file:
+        code_string = file.read()
+    return code_string
+
+# Read the content of the thirteenth file
+plain_thirteenth_file = read_thirteenth_file(thirteenth_file_path)
+
+# Handle fourteenth_file_path
+fourteenth_file_path = 'index0.html'  # Replace with the actual path to your fourteenth file
+
+def read_fourteenth_file(file_path):
+    with open(file_path, 'r') as file:
+        code_string = file.read()
+    return code_string
+
+# Read the content of the fourteenth file
+plain_fourteenth_file = read_fourteenth_file(fourteenth_file_path)
+
+# Add the content of the fourteenth file to the 'exons' entry in 'dna_structure'
+dna_structure['exons'] = {
+    'shell': plain_thirteenth_file,
+    'js': plain_fourth_file,
+    'html': plain_fourteenth_file,
+    'metadata': initial_strand_metadata  # Reusing initial_strand_metadata for example
+}
 
 # Write to JSON
 with open(output_path, 'w', encoding='utf-8') as json_file:
