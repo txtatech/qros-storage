@@ -128,8 +128,8 @@ python3 qros-dna-decoder.py
             }
         },
         "emu": {
-            "libv86": "PLACEHOLDER FOR TESTING SPEED ONLY<--...This is the libV8s.js file for OS emulation.",
-            "v86wasm": "{\"chunks\": [\"H4sIAOtuGmUC_wvwcXR29fD3c<--...This is the V8s.wasm file for OS emulation stored as chunks.",
+            "libv86": "PLACEHOLDER FOR TESTING SPEED ONLY<--...This is the libV86.js file for OS emulation.",
+            "v86wasm": "{\"chunks\": [\"H4sIAOtuGmUC_wvwcXR29fD3c<--...This is the V86.wasm file for OS emulation stored as chunks.",
             "metadata": {
                 "metadata": {
                     "version": "1.0",
