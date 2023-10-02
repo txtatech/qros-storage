@@ -93,9 +93,9 @@ python3 qros-dna-decoder.py
             "mappings": "{'the': '_T', 'qrosdnaencoderpy': '_A',,<--...This is where the mappings are stored."
         },
         "exons": {
-            "shell": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<--...This is the 'live component' javascript shell.",
-            "js": "// Simulated JSON containing \"live components\"\n<--...This is the 'live component' javascript backend.",
-            "html": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Dynamic<--...This is the 'live component' html frontend.",
+            "0shell": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<--...This is the 'live component' javascript shell.",
+            "0js": "// Simulated JSON containing \"live components\"\n<--...This is the 'live component' javascript backend.",
+            "0html": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Dynamic<--...This is the 'live component' html frontend.",
             "metadata": {
                 "metadata": {
                     "version": "1.0",
@@ -128,6 +128,7 @@ python3 qros-dna-decoder.py
             }
         },
         "emu": {
+            "loader": "<!doctype html>\n<title>Asynchronous loading of disk images<--...This is the html loader file for V86 OS emulation.",
             "libv86": "PLACEHOLDER FOR TESTING SPEED ONLY<--...This is the libV8s.js file for OS emulation.",
             "v86wasm": "{\"chunks\": [\"H4sIAOtuGmUC_wvwcXR29fD3c<--...This is the V8s.wasm file for OS emulation stored as chunks.",
             "metadata": {
