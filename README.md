@@ -7,6 +7,10 @@ The current version encapsulates the following file types within a single 'qr co
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna
 
+## Use 'qros-dna-live' for encoding and decoding without qr codes or qr code videos:
+
+https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna-live
+
 ## Use 'qros-builder' for standalone file encoding:
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-builder
