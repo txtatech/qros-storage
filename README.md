@@ -11,7 +11,7 @@ https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-builder
 
-## Use 'qros-builder-lite' for standalone file encoding and decoding without qr codes pr qr code video files:
+## Use 'qros-builder-lite' for standalone file encoding and decoding without qr codes or qr code video files:
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-builder-lite
 
