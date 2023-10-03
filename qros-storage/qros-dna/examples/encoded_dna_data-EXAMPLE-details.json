@@ -1,0 +1,100 @@
+{
+    "dna_structure": {
+        "Genomes": {
+            "Chromosomes": {
+                "Genes": {
+                    "Nucleotide Sequences": {
+                        "code": "The `qros-_CATZ-encoder.py` _C _G _T<--...This is 'dna' encoded from a text file that creates the mappings."
+                    }
+                }
+            }
+        },
+        "introns": {
+            "mappings": "{'the': '_T', 'qrosdnaencoderpy': '_A',,<--...This is where the mappings are stored."
+        },
+        "exons": {
+            "0shell": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<--...This is the 'live component' javascript shell.",
+            "0js": "// Simulated JSON containing \"live components\"\n<--...This is the 'live component' javascript backend.",
+            "0html": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Dynamic<--...This is the 'live component' html frontend.",
+            "metadata": {
+                "metadata": {
+                    "version": "1.0",
+                    "author": "AI",
+                    "description": "DNA strand with metadata and versioning",
+                    "timestamp": "2023-10-02T03:19:08.683209"
+                }
+            }
+        },
+        "files": {
+            "code": "{\"chunks\": [\"H4sIAOtuGmUC_wvwZmbhYmYAgq-STuFK<--...This is a zip file stored as chunks.",
+            "metadata": {
+                "metadata": {
+                    "version": "1.0",
+                    "author": "AI",
+                    "description": "DNA strand with metadata and versioning",
+                    "timestamp": "2023-10-02T03:19:08.683209"
+                }
+            }
+        },
+        "profusion": {
+            "code": "<html>\n<head>\n      <style>\n<--...This is the html file for the stable-profusion frontend.",
+            "metadata": {
+                "metadata": {
+                    "version": "1.0",
+                    "author": "AI",
+                    "description": "DNA strand with metadata and versioning",
+                    "timestamp": "2023-10-02T03:19:08.683209"
+                }
+            }
+        },
+        "emu": {
+            "loader": "<!doctype html>\n<title>Asynchronous loading of disk images<--...This is the html loader file for V86 OS emulation.",
+            "libv86": "PLACEHOLDER FOR TESTING SPEED ONLY<--...This is the libV86.js file for OS emulation.",
+            "v86wasm": "{\"chunks\": [\"H4sIAOtuGmUC_wvwcXR29fD3c<--...This is the V86.wasm file for OS emulation stored as chunks.",
+            "metadata": {
+                "metadata": {
+                    "version": "1.0",
+                    "author": "AI",
+                    "description": "DNA strand with metadata and versioning",
+                    "timestamp": "2023-10-02T03:19:08.683209"
+                }
+            }
+        }
+    },
+    "initial_strand": {
+        "code": "#!/bin/bash\n\n_AZ=('T' 'A' 'C' 'G' 'Z')\n<--...This is a bash file for a list of possible combinations.",
+        "metadata": {
+            "metadata": {
+                "version": "1.0",
+                "author": "AI",
+                "description": "DNA strand with metadata and versioning",
+                "timestamp": "2023-10-02T03:19:08.683209"
+            }
+        }
+    },
+    "second_strand": {
+        "code": "#!/bin/bash\n\n# Set _T maximum _ACTC _GGT _AZ<--...This is a bash file for splitting large text files.",
+        "metadata": {
+            "metadata": {
+                "version": "1.0",
+                "author": "AI",
+                "description": "DNA strand with metadata and versioning",
+                "timestamp": "2023-10-02T03:19:08.683209"
+            }
+        }
+    },
+    "third_strand": {
+        "js-shell": "<!DOCTYPE html>\n<html lang=\"en\">\n<--...This is another javascript shell html file for backend use.",
+        "encoded-encoder": "# Begin _TTG _ZTA WASM _TAC _GA<--...This is a dna encoded version of the 'qros-dna-encoder.py' file used to encode and create this JSON.",
+        "encoded-decoder": "# Begin _TTCZ _CT _GTCZ _GGT<--...This is a dna encoded version of the 'qros-dna-decoder.py' file used to decode this JSON.",
+        "decoder": "# Begin decoding and reconstruction<--...This is a plain text version of the 'qros-dna-decoder.py' file used to decode this JSON.",
+        "metadata": {
+            "metadata": {
+                "version": "1.0",
+                "author": "AI",
+                "description": "DNA strand with metadata and versioning",
+                "timestamp": "2023-10-02T03:19:08.683209"
+            }
+        }
+    }
+}
