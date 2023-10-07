@@ -191,12 +191,19 @@ def main():
     # Initialize the RNA_DNA_Mapper
     rna_dna_mapper = RNA_DNA_Mapper(mg.generated_mappings, mg.word_frequency_filtered)
 
+    # Define the path to the 'qros-dna-main.py' file
+    qros_dna_main_path = os.path.join(os.path.dirname(__file__), 'qros-dna-main.py')
+
+    # Read the content of 'qros-dna-main.py' file
+    with open(qros_dna_main_path, 'r', encoding='utf-8') as main_script_file:
+        main_script_content = main_script_file.read()
+
     # Initialize the CodeParser
     parser = CodeParser('inputs/dna/qros-dna-readme.txt', 'outputs/encoded_dna_data.json', rna_dna_mapper)
 
     # Here is where you should call the method on parser
     initial_strand_code_entry = parser.create_code_entry()
-    initial_strand_code = initial_strand_code_entry['code']
+    initial_strand_code = main_script_content  # Replace with the content of 'qros-dna-main.py'
     initial_strand_code = rna_dna_mapper.map_body(initial_strand_code)
 
     dna_structure_code_entry = parser.create_code_entry()
@@ -276,6 +283,23 @@ def main():
     # Use FileProcessor to encode the final encoded_dna_data.json into chunks.json
     processor = FileProcessor(input_directory='outputs', output_directory='outputs')
     processor.compress_and_generate_base64_chunks('encoded_dna_data.json', output_file_name='chunks.json')
+
+    # Read the contents of chunks.json as a string
+    chunks_json_path = os.path.join(processor.output_directory, 'chunks.json')
+    with open(chunks_json_path, 'r', encoding='utf-8') as chunks_file:
+        chunks_data = chunks_file.read()
+
+    # Create a dictionary for the initial_strand including the chunks field
+    initial_strand_with_chunks = {
+        'chunks': chunks_data,  # Include the chunks field here
+        'code': initial_strand_code,
+        'metadata': initial_strand_metadata,
+        'exons': exons_data
+    }
+
+    # Serialize the initial_strand_with_chunks JSON structure
+    with open(output_path, 'w', encoding='utf-8') as json_file:
+        json.dump({'dna_structure': dna_structure, 'initial_strand': initial_strand_with_chunks}, json_file, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
     main()
