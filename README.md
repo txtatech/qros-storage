@@ -3,6 +3,10 @@ This is a convergent repository for various qr code data storage projects with t
 
 The current version encapsulates the following file types within a single 'qr code video' and JSON file: python scripts, an html file, a text file, bash scripts, a javascript file and a zip file.
 
+## Use 'qros-dna-main' for the latest refactored stable testing version:
+
+https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna-main
+
 ## Use 'qros-dna' for the latest stable version:
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna
