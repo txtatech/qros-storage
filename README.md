@@ -7,7 +7,7 @@ The current version encapsulates the following file types within a single 'qr co
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna-main
 
-## Use 'qros-dna' for the latest stable version:
+## Use 'qros-dna' for the older stable version:
 
 https://github.com/txtatech/qros-storage/tree/main/qros-storage/qros-dna
 
