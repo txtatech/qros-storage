@@ -230,14 +230,33 @@ def main():
         exons_data[exon_key] = processed_data
 
     current_timestamp = datetime.datetime.now().isoformat()
+    # Your existing initial_strand_metadata dictionary
     initial_strand_metadata = {
         'metadata': {
+            'persistenceFlag': 'true',
             'version': '1.0',
             'author': 'AI',
             'description': 'DNA strand with metadata and versioning',
-            'timestamp': current_timestamp
+            'timestamp': "current_timestamp"  # Replace with actual timestamp
         }
     }
+
+    # The new kernel dictionary you want to add
+    new_kernel_data = {
+        "kernel": {
+            "trigger": {
+                "action": "print",
+                "data": "This is a trigger",
+                "annotation": "execute_on_read"
+            }
+        }
+    }
+
+    # Add new_kernel_data to initial_strand_metadata
+    initial_strand_metadata.update(new_kernel_data)
+
+    # Now initial_strand_metadata has the new kernel data
+    print(initial_strand_metadata)
 
     initial_strand = {
         'code': initial_strand_code,
