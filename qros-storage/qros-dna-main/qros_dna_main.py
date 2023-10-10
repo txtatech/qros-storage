@@ -238,12 +238,17 @@ def main():
             'author': 'AI',
             'description': 'DNA strand with metadata and versioning',
             'timestamp': "current_timestamp"  # Replace with actual timestamp
+        },
+        'kernel0': {
+            'trigger': {
+                'script': "console.log('Trigger activated');"
+            }
         }
     }
 
     # The new kernel dictionary you want to add
-    new_kernel_data = {
-        "kernel": {
+    new_kernel1_data = {
+        "kernel1": {
             "trigger": {
                 "action": "print",
                 "data": "This is a trigger",
@@ -252,8 +257,8 @@ def main():
         }
     }
 
-    # Add new_kernel_data to initial_strand_metadata
-    initial_strand_metadata.update(new_kernel_data)
+    # Add new_kernel1_data to initial_strand_metadata
+    initial_strand_metadata.update(new_kernel1_data)
 
     # Now initial_strand_metadata has the new kernel data
     print(initial_strand_metadata)
