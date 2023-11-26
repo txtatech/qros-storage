@@ -23,6 +23,8 @@ def add_genome0_to_dna_structure(encoded_dna_file_path, chunks_file_path, output
                 "Kernel": {}
             },
             "FileSystem": {},  # Inserting the chunk content here
+
+            },    
             "WebFrontEnd": {
                 "HTML": {},
                 "CSS": {},
@@ -37,7 +39,6 @@ def add_genome0_to_dna_structure(encoded_dna_file_path, chunks_file_path, output
                 "Applications": {}
             }
         }
-    }  # Fixed: The closing bracket was missing
     
     # Add Genome0 to the dna_structure
     if 'dna_structure' in encoded_dna_data:

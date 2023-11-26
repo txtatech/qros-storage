@@ -6,6 +6,11 @@ python3 qros_dna_main.py
 # Wait
 wait
 
+echo Running qros_dna_chunker as a sub-process
+
+# Wait
+wait
+
 echo Working... Chunks Created
 
 # Start
